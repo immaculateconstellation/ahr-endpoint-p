@@ -1,0 +1,41 @@
+=== building AHR (release) ===
+    Finished `release` profile [optimized] target(s) in 1.36s
+fixture tree: /tmp/ahr-fp-review.X2FL8y/work/src-tree
+fixture crate: /tmp/ahr-fp-review.X2FL8y/work/crate
+
+===== B1-cargo-build (watch: /tmp/ahr-fp-review.X2FL8y/work/crate, continuous ~16 s) =====
+[2026-11-18T16:00:41Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=5 writes=74 max_entropy=0.68 watch=["/tmp/ahr-fp-review.X2FL8y/work/crate"]
+[2026-11-18T16:00:44Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=5 writes=74 max_entropy=0.68 watch=["/tmp/ahr-fp-review.X2FL8y/work/crate"]
+[2026-11-18T16:00:47Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=5 writes=74 max_entropy=0.68 watch=["/tmp/ahr-fp-review.X2FL8y/work/crate"]
+[2026-11-18T16:00:50Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=5 writes=74 max_entropy=0.68 watch=["/tmp/ahr-fp-review.X2FL8y/work/crate"]
+--- audit summary (B1-cargo-build) ---
+records: 4 (process flags: 0, host anomalies: 4)
+{"ts_unix":1795017641,"kind":"file-activity-anomaly","pid":null,"watch_paths":["/tmp/ahr-fp-review.X2FL8y/work/crate"],"renames_in_window":5,"writes_in_window":74,"max_entropy":0.6838406,"attributed":false,"dry_run":true}
+
+===== B2-bulk-copy (watch: /tmp/ahr-fp-review.X2FL8y/work/copy, continuous ~16 s) =====
+[2026-11-18T16:00:58Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/copy"]
+[2026-11-18T16:01:01Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/copy"]
+[2026-11-18T16:01:04Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/copy"]
+[2026-11-18T16:01:07Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/copy"]
+--- audit summary (B2-bulk-copy) ---
+records: 4 (process flags: 0, host anomalies: 4)
+{"ts_unix":1795017658,"kind":"file-activity-anomaly","pid":null,"watch_paths":["/tmp/ahr-fp-review.X2FL8y/work/copy"],"renames_in_window":0,"writes_in_window":1800,"max_entropy":0.5812118,"attributed":false,"dry_run":true}
+
+===== B3-tar-extract (watch: /tmp/ahr-fp-review.X2FL8y/work/tar, continuous ~16 s) =====
+[2026-11-18T16:01:15Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/tar"]
+[2026-11-18T16:01:18Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/tar"]
+[2026-11-18T16:01:21Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/tar"]
+[2026-11-18T16:01:24Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=0 writes=1800 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/tar"]
+--- audit summary (B3-tar-extract) ---
+records: 4 (process flags: 0, host anomalies: 4)
+{"ts_unix":1795017675,"kind":"file-activity-anomaly","pid":null,"watch_paths":["/tmp/ahr-fp-review.X2FL8y/work/tar"],"renames_in_window":0,"writes_in_window":1800,"max_entropy":0.5812118,"attributed":false,"dry_run":true}
+
+===== B4-backup-renames (watch: /tmp/ahr-fp-review.X2FL8y/work/backup, continuous ~16 s) =====
+[2026-11-18T16:01:33Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=1238 writes=1239 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/backup"]
+[2026-11-18T16:01:36Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=1293 writes=1293 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/backup"]
+[2026-11-18T16:01:39Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=1321 writes=1320 max_entropy=0.58 watch=["/tmp/ahr-fp-review.X2FL8y/work/backup"]
+--- audit summary (B4-backup-renames) ---
+records: 3 (process flags: 0, host anomalies: 3)
+{"ts_unix":1795017693,"kind":"file-activity-anomaly","pid":null,"watch_paths":["/tmp/ahr-fp-review.X2FL8y/work/backup"],"renames_in_window":1238,"writes_in_window":1239,"max_entropy":0.5812118,"attributed":false,"dry_run":true}
+
+=== done === (scratch dir /tmp/ahr-fp-review.X2FL8y removed on exit)
