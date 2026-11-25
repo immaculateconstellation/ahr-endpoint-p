@@ -1,0 +1,70 @@
+=== building AHR (release) ===
+    Finished `release` profile [optimized] target(s) in 1.26s
+
+===== S0-baseline-no-sims =====
+[2026-11-18T07:11:29Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:29Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S0-baseline-no-sims) ---
+(no audit record — no detection)
+
+===== S1-T1059-pwsh-hot =====
+[2026-11-18T07:11:32Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:33Z INFO  ahr_endpoint::detection] Potential ransomware signal: pwsh (PID 14719) risk=7
+[2026-11-18T07:11:33Z INFO  ahr_endpoint] DRY-RUN would flag PID 14719 action=Medium ttl=60 snapshot_risk=7 scored_risk=2 effective_risk=7 recommended=LogOnly human_review=false reasons=["unsigned binary (+1)", "userspace heuristic ladder: risk 7 (name/resource indicators)"]
+[2026-11-18T07:11:33Z INFO  ahr_endpoint::audit] AUDIT {"ts_unix":1794985893,"pid":14719,"process_name":"pwsh","process_hash":"b8c5e2c17fbf6679be7b49f555f95e6533e26736908fd5dfcd5225c023407641","snapshot_risk":7,"scored_risk":2,"effective_risk":7,"anomaly_score":0.2,"reasons":["unsigned binary (+1)","userspace heuristic ladder: risk 7 (name/resource indicators)"],"recommended":"LogOnly","companions":[],"executable_action":"Medium","requires_human_review":false,"dry_run":true,"applied":false}
+[2026-11-18T07:11:33Z INFO  ahr_endpoint] DRY-RUN decision: PID 14719 action=Medium risk=7 process=pwsh
+[2026-11-18T07:11:33Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S1-T1059-pwsh-hot) ---
+{"ts_unix":1794985893,"pid":14719,"process_name":"pwsh","process_hash":"b8c5e2c17fbf6679be7b49f555f95e6533e26736908fd5dfcd5225c023407641","snapshot_risk":7,"scored_risk":2,"effective_risk":7,"anomaly_score":0.2,"reasons":["unsigned binary (+1)","userspace heuristic ladder: risk 7 (name/resource indicators)"],"recommended":"LogOnly","companions":[],"executable_action":"Medium","requires_human_review":false,"dry_run":true,"applied":false}
+
+===== S2-T1486-encryptor-hot =====
+[2026-11-18T07:11:36Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:36Z INFO  ahr_endpoint::detection] Potential ransomware signal: encryptor-sim (PID 14748) risk=9
+[2026-11-18T07:11:36Z INFO  ahr_endpoint] DRY-RUN would flag PID 14748 action=Kill ttl=60 snapshot_risk=9 scored_risk=2 effective_risk=9 recommended=LogOnly human_review=false reasons=["unsigned binary (+1)", "userspace heuristic ladder: risk 9 (name/resource indicators)"]
+[2026-11-18T07:11:36Z INFO  ahr_endpoint::audit] AUDIT {"ts_unix":1794985896,"pid":14748,"process_name":"encryptor-sim","process_hash":"8f58326a3e79d0b2f5f2229ae8333b8374169d99bfa121a2eb92f20ea6762f08","snapshot_risk":9,"scored_risk":2,"effective_risk":9,"anomaly_score":0.2,"reasons":["unsigned binary (+1)","userspace heuristic ladder: risk 9 (name/resource indicators)"],"recommended":"LogOnly","companions":[],"executable_action":"Kill","requires_human_review":false,"dry_run":true,"applied":false}
+[2026-11-18T07:11:36Z INFO  ahr_endpoint] DRY-RUN decision: PID 14748 action=Kill risk=9 process=encryptor-sim
+[2026-11-18T07:11:36Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S2-T1486-encryptor-hot) ---
+{"ts_unix":1794985896,"pid":14748,"process_name":"encryptor-sim","process_hash":"8f58326a3e79d0b2f5f2229ae8333b8374169d99bfa121a2eb92f20ea6762f08","snapshot_risk":9,"scored_risk":2,"effective_risk":9,"anomaly_score":0.2,"reasons":["unsigned binary (+1)","userspace heuristic ladder: risk 9 (name/resource indicators)"],"recommended":"LogOnly","companions":[],"executable_action":"Kill","requires_human_review":false,"dry_run":true,"applied":false}
+
+===== S3-T1059-chain-depth2 =====
+[2026-11-18T07:11:39Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:39Z INFO  ahr_endpoint::detection] Potential ransomware signal: pwsh-chain (PID 14773) risk=7
+[2026-11-18T07:11:39Z INFO  ahr_endpoint] DRY-RUN would flag PID 14773 action=Medium ttl=60 snapshot_risk=7 scored_risk=2 effective_risk=7 recommended=LogOnly human_review=false reasons=["unsigned binary (+1)", "userspace heuristic ladder: risk 7 (name/resource indicators)"]
+[2026-11-18T07:11:39Z INFO  ahr_endpoint::audit] AUDIT {"ts_unix":1794985899,"pid":14773,"process_name":"pwsh-chain","process_hash":"5c4989e87cd824a737ff584deca9a31cc466c7eba3afe1d6fedf18e4b24fcd85","snapshot_risk":7,"scored_risk":2,"effective_risk":7,"anomaly_score":0.2,"reasons":["unsigned binary (+1)","userspace heuristic ladder: risk 7 (name/resource indicators)"],"recommended":"LogOnly","companions":[],"executable_action":"Medium","requires_human_review":false,"dry_run":true,"applied":false}
+[2026-11-18T07:11:39Z INFO  ahr_endpoint] DRY-RUN decision: PID 14773 action=Medium risk=7 process=pwsh-chain
+[2026-11-18T07:11:39Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S3-T1059-chain-depth2) ---
+{"ts_unix":1794985899,"pid":14773,"process_name":"pwsh-chain","process_hash":"5c4989e87cd824a737ff584deca9a31cc466c7eba3afe1d6fedf18e4b24fcd85","snapshot_risk":7,"scored_risk":2,"effective_risk":7,"anomaly_score":0.2,"reasons":["unsigned binary (+1)","userspace heuristic ladder: risk 7 (name/resource indicators)"],"recommended":"LogOnly","companions":[],"executable_action":"Medium","requires_human_review":false,"dry_run":true,"applied":false}
+
+===== S4-benign-hot-worker =====
+[2026-11-18T07:11:42Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:43Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S4-benign-hot-worker) ---
+(no audit record — no detection)
+
+===== S5-T1059-pwsh-idle =====
+[2026-11-18T07:11:46Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:46Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S5-T1059-pwsh-idle) ---
+(no audit record — no detection)
+
+===== S6-file-churn-no-name =====
+[2026-11-18T07:11:49Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:50Z INFO  ahr_endpoint::audit] AUDIT {"ts_unix":1794985910,"kind":"file-activity-anomaly","pid":null,"watch_paths":["/tmp/ahr-gootloader-test.sEpzgM/churn"],"renames_in_window":79,"writes_in_window":0,"max_entropy":0.0,"attributed":false,"dry_run":true}
+[2026-11-18T07:11:50Z INFO  ahr_endpoint] DRY-RUN file-activity anomaly (unattributed): renames=79 writes=0 max_entropy=0.00 watch=["/tmp/ahr-gootloader-test.sEpzgM/churn"]
+[2026-11-18T07:11:50Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S6-file-churn-no-name) ---
+{"ts_unix":1794985910,"kind":"file-activity-anomaly","pid":null,"watch_paths":["/tmp/ahr-gootloader-test.sEpzgM/churn"],"renames_in_window":79,"writes_in_window":0,"max_entropy":0.0,"attributed":false,"dry_run":true}
+
+===== S7-encryptor-attributed =====
+[2026-11-18T07:11:53Z INFO  ahr_endpoint]    DRY-RUN: no eBPF writes, process signals, or NATS invariants will be emitted
+[2026-11-18T07:11:53Z INFO  ahr_endpoint::detection] File-activity signal: python3 (PID 14848) risk=8 renames=1763 writes=1763 entropy=1.00
+[2026-11-18T07:11:53Z INFO  ahr_endpoint] DRY-RUN would flag PID 14848 action=Medium ttl=60 snapshot_risk=8 scored_risk=9 effective_risk=9 recommended=IsolateHost human_review=true reasons=["high write entropy (mass encryption pattern) (+3)", "abnormal write velocity (+2)", "mass rename burst (+2)", "unsigned binary (+1)", "userspace heuristic ladder: risk 8 (name/resource indicators)", "policy: IsolateHost is a privilege-escalated recommendation — executable action held at suspend pending human authorization"]
+[2026-11-18T07:11:53Z INFO  ahr_endpoint::audit] AUDIT {"ts_unix":1794985913,"pid":14848,"process_name":"python3","process_hash":"51ceff6b6eeaf75a749159fee27a1adebc255a7e71427b00e3af993677fe753a","snapshot_risk":8,"scored_risk":9,"effective_risk":9,"anomaly_score":0.9,"reasons":["high write entropy (mass encryption pattern) (+3)","abnormal write velocity (+2)","mass rename burst (+2)","unsigned binary (+1)","userspace heuristic ladder: risk 8 (name/resource indicators)","policy: IsolateHost is a privilege-escalated recommendation — executable action held at suspend pending human authorization"],"recommended":"IsolateHost","companions":["SendSocWebhook","QuarantineFile","MemoryDump"],"executable_action":"Medium","requires_human_review":true,"dry_run":true,"applied":false}
+[2026-11-18T07:11:53Z INFO  ahr_endpoint] DRY-RUN decision: PID 14848 action=Medium risk=9 process=python3
+[2026-11-18T07:11:53Z INFO  ahr_endpoint] Single-cycle run complete
+--- audit record (S7-encryptor-attributed) ---
+{"ts_unix":1794985913,"pid":14848,"process_name":"python3","process_hash":"51ceff6b6eeaf75a749159fee27a1adebc255a7e71427b00e3af993677fe753a","snapshot_risk":8,"scored_risk":9,"effective_risk":9,"anomaly_score":0.9,"reasons":["high write entropy (mass encryption pattern) (+3)","abnormal write velocity (+2)","mass rename burst (+2)","unsigned binary (+1)","userspace heuristic ladder: risk 8 (name/resource indicators)","policy: IsolateHost is a privilege-escalated recommendation — executable action held at suspend pending human authorization"],"recommended":"IsolateHost","companions":["SendSocWebhook","QuarantineFile","MemoryDump"],"executable_action":"Medium","requires_human_review":true,"dry_run":true,"applied":false}
+
+=== done === (scratch dir /tmp/ahr-gootloader-test.sEpzgM removed on exit)
