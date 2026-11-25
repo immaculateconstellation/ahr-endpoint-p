@@ -1,0 +1,47 @@
+[package]
+name = "ahr-endpoint"
+version = "0.3.0"
+edition = "2021"
+description = "Adaptive Hollow Reflector — global immune system for endpoints. Sub-2s ransomware containment via behavioral invariants, graduated response, NATS, and eBPF kernel enforcement."
+license = "LicenseRef-IOF-Attribution-1.0"
+authors = ["Gregory Scott Davis <Princeton, NC>"]
+repository = "https://github.com/Immaculate1022/AHR-Endpoint"
+keywords = ["ransomware", "endpoint-security", "nats", "ebpf", "cybersecurity", "immune-system"]
+categories = ["network-programming", "os"]
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+nats = "0.24"
+sysinfo = "0.30"
+sha2 = "0.10"
+rand = "0.8"
+log = "0.4"
+env_logger = "0.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# eBPF userspace loader (Linux only — enable with --features ebpf)
+aya = { version = "0.13", optional = true }
+aya-log = { version = "0.2", optional = true }
+# libc is a direct dependency (inotify file telemetry) as well as an
+# eBPF-path dependency; it is already in Cargo.lock / the local registry.
+libc = "0.2"
+
+[features]
+default = []
+ebpf = ["aya", "aya-log"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+# Release binaries must not leak the build machine: strip symbols.
+# Source paths embedded by panic locations are remapped at build time
+# by scripts/build_release.sh (RUSTFLAGS --remap-path-prefix $HOME=.);
+# `trim-paths` is still nightly-only, so it is intentionally NOT set here
+# — the tree must keep building on stable Rust.
+strip = true
+
+# nats 0.24.1 permits rand >=0.8 for nuid, which resolves to rand 0.10
+# and breaks nuid's rand 0.8 API usage. Keep the dependency graph reproducible.
+[patch.crates-io]
+nuid = { path = "vendor/nuid" }
