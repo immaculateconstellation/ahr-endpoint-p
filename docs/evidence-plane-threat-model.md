@@ -40,3 +40,16 @@ detection, which is single-host by construction.
    plane is a *recommendation*, not an RPC.
 3. A failed signature verification on an evidence event is an audit-worthy
    event, not a dropped message.
+
+## Test data
+
+`testdata/evidence/` holds sample evidence events, one per threat the
+model can demonstrate as a document: valid (control), forged (T1),
+replayed (T2), PII leak (T3), flood burst (T4), rotated key (T6).
+T5 has no event fixture — it is a transport property. Signatures in
+the fixtures are placeholders, not real Ed25519 signatures, and the
+envelope is not implemented in the agent yet; see
+`testdata/evidence/README.md` and `manifest.json` for the mapping,
+the expected verdict per fixture, and the stated assumptions.
+`tests/evidence_fixtures.rs` checks the fixtures' structure; it
+does not verify signatures, because there is no verifier yet.

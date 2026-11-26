@@ -101,6 +101,10 @@ docs/
   archive/          Research candidates and review notes (provenance)
 scripts/
   setup_ebpf.sh     Linux/nightly/bpf-linker setup helper
+testdata/
+  evidence/         Sample evidence events (T1–T4, T6) + manifest + README
+tests/
+  evidence_fixtures.rs   Manifest-driven structure checks for the fixtures
 ```
 
 ## Research archive
