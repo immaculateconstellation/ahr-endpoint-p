@@ -201,7 +201,7 @@ mod tests {
 
     #[test]
     fn unknown_kind_is_an_error() {
-        let dir = std::env::temp_dir().join("ahr-decoy-test");
+        let dir = std::env::temp_dir().join("ahr-decoy-test-unknown");
         let _ = fs::create_dir_all(&dir);
         let reg = dir.join("registry.json");
         assert!(generate_at("nuclear", &dir, &reg).is_err());

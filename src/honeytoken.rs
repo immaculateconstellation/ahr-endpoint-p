@@ -774,6 +774,9 @@ mod tests {
     }
 
     #[test]
+    // Known flake (2026-11-26): flaked once on timing, passed on retry.
+    // Not yet root-caused. Suspected inotify latency under container
+    // load. Reopen when: reproduced with timestamps.
     fn watcher_ignores_self_access() {
         // The agent's own embed opens the file; the watch must not
         // report that as theft.
