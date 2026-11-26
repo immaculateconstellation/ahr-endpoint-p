@@ -3,8 +3,8 @@
 **Adaptive Hollow Reflector (AHR)** is an experimental Rust endpoint-security agent for exploring ransomware-like process detection and graduated response controls on Linux. It is intended for security researchers and engineers using an isolated test environment. A safe first look is a single, non-enforcing dry run:
 
 ```bash
-git clone https://github.com/Immaculate1022/AHR-Endpoint.git
-cd AHR-Endpoint
+git clone https://github.com/immaculateconstellation/ahr-endpoint-p.git
+cd ahr-endpoint-p
 RUST_LOG=info cargo run --release -- --dry-run --once
 ```
 
