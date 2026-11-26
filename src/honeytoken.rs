@@ -762,8 +762,18 @@ mod tests {
             .stderr(Stdio::null())
             .spawn()
             .expect("spawn sleep");
-        std::thread::sleep(Duration::from_millis(200));
-        let hits = w.cycle();
+        // inotify delivery and child startup are async: poll the drain
+        // until the hit lands or the deadline passes, instead of one
+        // non-blocking drain that can run before the event arrives.
+        let mut hits = Vec::new();
+        let deadline = std::time::Instant::now() + Duration::from_secs(2);
+        while std::time::Instant::now() < deadline {
+            hits = w.cycle();
+            if !hits.is_empty() {
+                break;
+            }
+            std::thread::sleep(Duration::from_millis(50));
+        }
         let _ = child.kill();
         let _ = child.wait();
         let _ = fs::remove_dir_all(&dir);
@@ -774,9 +784,12 @@ mod tests {
     }
 
     #[test]
-    // Known flake (2026-11-26): flaked once on timing, passed on retry.
-    // Not yet root-caused. Suspected inotify latency under container
-    // load. Reopen when: reproduced with timestamps.
+    // Flake history (2026-11-26): both canary-watcher tests flaked under
+    // load — watcher_ignores_self_access once, watcher_reports_foreign_open
+    // once, in 3 runs. Cause: a single non-blocking drain racing async
+    // inotify delivery (and child startup). Fix: poll the drain over a
+    // bounded window instead of draining once. The windowed drain is the
+    // honest check here: a late self event must still be suppressed.
     fn watcher_ignores_self_access() {
         // The agent's own embed opens the file; the watch must not
         // report that as theft.
@@ -787,8 +800,18 @@ mod tests {
         let mut w = CanaryWatcher::new_with_registry(vec![dir.clone()], reg.clone());
         assert!(w.enabled);
         let _id = embed_token_at(&p, &reg, None, false, "test").unwrap();
-        // Drain immediately: the embed's own open must be suppressed.
-        let hits = w.cycle();
+        // Drain over a window, not once: inotify delivery is async, so a
+        // single immediate drain can miss a late self event and pass
+        // vacuously. No hit may appear at any point in the window.
+        let deadline = std::time::Instant::now() + Duration::from_millis(500);
+        let mut hits = Vec::new();
+        while std::time::Instant::now() < deadline {
+            hits = w.cycle();
+            if !hits.is_empty() {
+                break;
+            }
+            std::thread::sleep(Duration::from_millis(50));
+        }
         let _ = fs::remove_dir_all(&dir);
         assert!(hits.is_empty(), "self access must not fire: {:?}", hits);
     }

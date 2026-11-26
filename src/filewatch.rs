@@ -830,7 +830,12 @@ mod tests {
         assert_eq!(w.watches.len(), 1);
         w.add_watch_recursive(&dir, 0);
         assert_eq!(w.watches.len(), 1, "re-scan must not duplicate watches");
-        unsafe { libc::close(fd) };
+        // Do NOT close fd here: `w` owns it and its Drop closes it.
+        // Closing it manually double-closes the number once the kernel
+        // recycles it to another thread's live fd — that aborted the
+        // test binary twice (2026-11-26, IO-safety violation) and left
+        // the integration test's synthetic spinner orphaned, which then
+        // tripped the next runs' baselines.
         let _ = fs::remove_dir_all(&dir);
     }
 }
