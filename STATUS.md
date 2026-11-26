@@ -42,8 +42,8 @@ Research prototype. Userspace Rust agent with optional Aya/eBPF loader path and 
 ## Run (prototype)
 
 ```bash
-git clone https://github.com/Immaculate1022/AHR-Endpoint.git
-cd AHR-Endpoint
+git clone https://github.com/immaculateconstellation/ahr-endpoint-p
+cd ahr-endpoint-p
 cargo build --release
 RUST_LOG=info ./target/release/ahr-endpoint --dry-run --once
 
@@ -64,7 +64,7 @@ Exercise only in an isolated test environment. Do not point this agent at produc
 ## Related
 
 - [README](README.md) — primary public description and prototype boundary
-- [PegaConstellation Hub STATUS](https://github.com/Immaculate1022/pegaconstellation-hub/blob/main/STATUS.md)
+- [IOF Resonance](https://github.com/immaculateconstellation/Iof-resonance)
 - [docs/archive/](docs/archive/) — unmerged research candidates
 
 ---

@@ -2,10 +2,10 @@
 name = "ahr-endpoint"
 version = "0.3.0"
 edition = "2021"
-description = "Adaptive Hollow Reflector — global immune system for endpoints. Sub-2s ransomware containment via behavioral invariants, graduated response, NATS, and eBPF kernel enforcement."
+description = "Adaptive Hollow Reflector — experimental Linux endpoint-security agent with behavioral signals, graduated response, audit logging, and optional NATS/eBPF paths."
 license = "LicenseRef-IOF-Attribution-1.0"
 authors = ["Gregory Scott Davis <Princeton, NC>"]
-repository = "https://github.com/Immaculate1022/AHR-Endpoint"
+repository = "https://github.com/immaculateconstellation/ahr-endpoint-p"
 keywords = ["ransomware", "endpoint-security", "nats", "ebpf", "cybersecurity", "immune-system"]
 categories = ["network-programming", "os"]
 
