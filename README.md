@@ -19,7 +19,7 @@ RUST_LOG=info cargo run --release -- --dry-run --once
 | Decision policy | `src/policy.rs` combines the detector ladder and the telemetry score; privilege-escalated recommendations are held for human authorization. |
 | Audit + control plane | Structured JSON audit records (`src/audit.rs`, `AHR_AUDIT_LOG`) and Sentinel X evidence events (`src/sentinel.rs`, `sentinelx.evidence` NATS subject / `AHR_SENTINELX_SINK`). |
 | Graduated enforcement | Risk-to-action logic and process-tree controls in `src/enforcement.rs` and `src/action.rs`. |
-| Cross-host signaling | NATS dependency and development scaffolding; deployment and latency claims require measurement. |
+| Cross-host signaling | NATS dependency and development scaffolding; deployment and latency claims require measurement. Threat model: [`docs/evidence-plane-threat-model.md`](docs/evidence-plane-threat-model.md). |
 | Kernel path | Optional Aya loader plus an eBPF prototype under `ebpf/`; a separately built object, Linux toolchain, and permissions are required. |
 | Research candidates | Versioned AHR scoring modules are preserved under [`docs/archive/`](docs/archive/) for provenance; version 06 was merged into the active engine on 2026-10-04. |
 
@@ -97,6 +97,7 @@ ebpf/
   README.md         eBPF build notes
 docs/
   eBPF_Enforcement.md
+  evidence-plane-threat-model.md   Cross-host evidence-plane threat model (T1–T6)
   archive/          Research candidates and review notes (provenance)
 scripts/
   setup_ebpf.sh     Linux/nightly/bpf-linker setup helper
