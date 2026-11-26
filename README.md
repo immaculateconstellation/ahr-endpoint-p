@@ -115,11 +115,7 @@ This repository is distributed under the [IOF Attribution License v1.0](LICENSE)
 
 ## Related project links
 
-- [PegaConstellation Hub](https://github.com/Immaculate1022/pegaconstellation-hub) — the ecosystem hub referenced above
-- [Sentinel X](https://github.com/Immaculate1022/SentinelX) — forensic telemetry control plane; AHR decisions stream to it as evidence events
-- [IOF Resonance Core](https://github.com/Immaculate1022/IOF-Resonance-Core)
-- [Sovereign Reality Engine](https://github.com/Immaculate1022/sovereign-reality-engine)
-- [PegaConstellation Documentation](https://github.com/Immaculate1022/docs)
+- [IOF Resonance Core](https://github.com/immaculateconstellation/Iof-resonance)
 
 ## Dry-run audit path
 
